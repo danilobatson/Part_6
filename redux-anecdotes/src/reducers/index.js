@@ -1,10 +1,8 @@
 import anecdoteReducer from './anecdoteReducer';
 import notificationReducer from './notificationReducer';
 import filterReducer from './filterReducer';
-import { setNotification, clearNotification } from './notificationReducer';
+import { setNotification } from './notificationReducer';
 import {
-  vote,
-  sort,
   createAnecdote,
   appendAnecdote,
   setAnecdotes,
@@ -15,9 +13,6 @@ export {
   anecdoteReducer,
   notificationReducer,
   setNotification,
-  clearNotification,
-  vote,
-  sort,
   setFilter,
   createAnecdote,
   filterReducer,

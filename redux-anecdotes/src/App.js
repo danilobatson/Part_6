@@ -1,4 +1,10 @@
-import { AnecdoteForm, Header, Notification, Filter } from './components/';
+import {
+  AnecdoteForm,
+  Header,
+  Notification,
+  Filter,
+  AnecdoteList,
+} from './components/';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setAnecdotes } from './reducers/';
@@ -7,11 +13,11 @@ import { initializeAnecdotes } from './reducers/anecdoteReducer';
 
 const App = () => {
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
-    dispatch(initializeAnecdotes)
+    dispatch(initializeAnecdotes);
   }, [dispatch]);
-  
+
   return (
     <div>
       <Header message='Anecdotes' />
@@ -20,6 +26,7 @@ const App = () => {
       {/* <AnecdoteList /> */}
       <Header message='Create New' />
       <AnecdoteForm />
+      <AnecdoteList />
     </div>
   );
 };
