@@ -1,4 +1,6 @@
 import { useSelector, } from 'react-redux';
+import { connect } from 'react-redux';
+
 const Notification = () => {
   const notification = useSelector((state) => state.notification);
 
@@ -10,4 +12,5 @@ const Notification = () => {
   return <>{notification && <div style={style}>{notification}</div>}</>;
 };
 
-export default Notification;
+const ConnectedNotes = connect()(Notification);
+export default ConnectedNotes;
