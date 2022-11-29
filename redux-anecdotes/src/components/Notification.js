@@ -11,6 +11,12 @@ const Notification = () => {
   };
   return <>{notification && <div style={style}>{notification}</div>}</>;
 };
+const mapStateToProps = (state) => {
+  return {
+    notification: state.notification,
+    filter: state.filter,
+  };
+};
 
-const ConnectedNotes = connect()(Notification);
+const ConnectedNotes = connect(mapStateToProps)(Notification);
 export default ConnectedNotes;

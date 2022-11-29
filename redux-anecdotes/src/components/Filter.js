@@ -4,6 +4,8 @@ import {
   setFilter,
 } from '../reducers';
 import { AnecdoteList } from './';
+import { connect } from 'react-redux';
+
 
 const Filter = () => {
   const anecdotes = useSelector((state) => state.anecdote);
@@ -34,4 +36,13 @@ const Filter = () => {
   );
 };
 
-export default Filter;
+const mapStateToProps = (state) => {
+  return {
+    filter: state.filter,
+  };
+};
+
+const ConnectedFilter = connect(mapStateToProps)(Filter);
+export default ConnectedFilter;
+
+
