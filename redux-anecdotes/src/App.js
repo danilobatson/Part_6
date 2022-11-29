@@ -1,15 +1,17 @@
 import {
   AnecdoteForm,
   Header,
-  AnecdoteList,
   Notification,
+  Filter,
 } from './components/';
 
 const App = () => {
   return (
     <div>
       <Header message='Anecdotes' />
-      <AnecdoteList />
+      <Notification />
+      <Filter />
+      {/* <AnecdoteList /> */}
       <Header message='Create New' />
       <AnecdoteForm />
     </div>

@@ -1,23 +1,38 @@
 import { useSelector, useDispatch } from 'react-redux';
-import {  vote, sort } from '../reducers';
+import {
+  vote,
+  sort,
+  setNotification,
+  clearNotification,
+} from '../reducers';
 
-const AnecdoteList = () => {
+const AnecdoteList = ({ anecdote }) => {
+  const { id, content, votes } = anecdote;
+
   const anecdotes = useSelector((state) => state.anecdote);
   const dispatch = useDispatch();
   dispatch(sort());
 
+  const voteAnecdote = async (id) => {
+    await dispatch(vote(id));
+    await dispatch(
+      setNotification(
+        `You voted '${anecdotes.find((a) => a.id === id).content}'`
+      )
+    );
+    setTimeout(() => {
+      dispatch(clearNotification(''));
+    }, 5000);
+  };
+
   return (
-    <>
-      {anecdotes.map((anecdote) => (
-        <div key={anecdote.id}>
-          <div>{anecdote.content}</div>
-          <div>
-            has {anecdote.votes}
-            <button onClick={() => dispatch(vote(anecdote.id))}>vote</button>
-          </div>
-        </div>
-      ))}
-    </>
+    <div key={id}>
+      <div>{content}</div>
+      <div>
+        has {votes}
+        <button onClick={() => voteAnecdote(anecdote.id)}>vote</button>
+      </div>
+    </div>
   );
 };
 
